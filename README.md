@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Docker/Docker-Compose set-up
+
+For best results, also clone [this repo](https://github.com/cjekal/docker-spring-boot) within the same parent folder a this repo. In other words:
+
+```
+<parent folder>
+  ├── hello-world-app/
+  │   ├── <all the hello-world-app files>
+  └── docker-spring-boot/
+      └── <all the docker-spring-boot files>
+```
