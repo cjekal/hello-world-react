@@ -6,3 +6,34 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+  
+  app:
+    build: ../docker-spring-boot/
+    environment:
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: test
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../docker-spring-boot:/home/gradle/project
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:13.2
+    environment:
+      POSTGRES_PASSWORD: test
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  database:
